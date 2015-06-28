@@ -1,48 +1,44 @@
 package com.huscii.fornow;
 
+import android.app.ExpandableListActivity;
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends ExpandableListActivity {
+
+    private ArrayList<String> parentItems = new ArrayList<String>();
+    private ArrayList<Object> childItems = new ArrayList<Object>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] arry = {"A","B","C"};
-        ArrayAdapter<String> adapta = new ArrayAdapter(this,
-                android.R.layout.simple_list_item_1,
-                arry);
-        ListView myList=(ListView)
-                findViewById(R.id.listView);
-        myList.setAdapter(adapta);
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+        parentItems.add("Android");
+        ArrayList<String> child = new ArrayList<String>();
+        child.add("Core");
+        child.add("Games");
+        childItems.add(child);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
+        ExpandableListView expandableList = getExpandableListView();
+        expandableList.setClickable(true);
+        EventExpandableListView adapter = new EventExpandableListView(parentItems, childItems);
+        adapter.setInflater((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE), this);
+        expandableList.setAdapter(adapter);
+        expandableList.setOnChildClickListener(this);
     }
 }
