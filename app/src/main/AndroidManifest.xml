@@ -20,10 +20,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EventView"
-            android:label="@string/title_activity_event_view" >
-        </activity>
-        <activity
             android:name=".IgnoreList"
             android:label="@string/title_activity_ignore_list" >
         </activity>
