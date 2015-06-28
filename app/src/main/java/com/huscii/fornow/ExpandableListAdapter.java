@@ -27,7 +27,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<String, String> _listDataChild;
+    private HashMap<String, EventData> _listDataChild;
 
 
 
@@ -60,7 +60,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, String> listChildData) {
+                                 HashMap<String, EventData> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -80,7 +80,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final String childText = (String) getChild(groupPosition, childPosition);
+        final String childText = ((EventData) getChild(groupPosition, childPosition)).getTitle();
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
@@ -115,24 +115,24 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         final TextView mapRedirect = (TextView) convertView.findViewById(R.id.lblDirectTo);
         //mapRedirect.setText(child.get(childPosition).);
-//        SpannableString ss = new SpannableString("Get Directions");
-//        ClickableSpan clickableSpan = new ClickableSpan() {
-//            @Override
-//            public void onClick(View textView) {
-//                String title = ((EventData) getChild(groupPosition, childPosition)).getTitle();
-//                double lat = _listDataChild.get(childPosition).getLat();
-//                double lon = _listDataChild.get(childPosition).getLon();
-//                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+lat+", "+lon+"("+title+")");
-//                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-//                mapIntent.setPackage("com.google.android.apps.maps");
-//                if (mapIntent.resolveActivity(mapRedirect.getContext().getPackageManager()) != null) {
-//                    mapRedirect.getContext().startActivity(mapIntent);
-//                }
-//            }
-//        };
-//        ss.setSpan(clickableSpan, 0, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        mapRedirect.setText(ss);
-//        mapRedirect.setMovementMethod(LinkMovementMethod.getInstance());
+        SpannableString ss = new SpannableString("Get Directions");
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+                String title = ((EventData) getChild(groupPosition, childPosition)).getTitle();
+                double lat = _listDataChild.get(_listDataHeader.get(childPosition)).getLat();
+                double lon = _listDataChild.get(_listDataHeader.get(childPosition)).getLon();
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+lat+", "+lon+"("+title+")");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(mapRedirect.getContext().getPackageManager()) != null) {
+                    mapRedirect.getContext().startActivity(mapIntent);
+                }
+            }
+        };
+        ss.setSpan(clickableSpan, 0, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mapRedirect.setText(ss);
+        mapRedirect.setMovementMethod(LinkMovementMethod.getInstance());
 
 
         Button btnListChildAttend = (Button) convertView

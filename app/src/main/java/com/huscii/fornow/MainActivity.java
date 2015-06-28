@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, String> listDataChild;
+    HashMap<String, EventData> listDataChild;
     GPSTracker gps;
 
     @Override
@@ -118,7 +118,7 @@ public class MainActivity extends Activity {
 
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, String>();
+        listDataChild = new HashMap<String, EventData>();
 
         // Firebase db listener:
         Firebase.setAndroidContext(this);
@@ -170,8 +170,8 @@ public class MainActivity extends Activity {
         comingSoon.add("The Canyons");
         comingSoon.add("Europa Report");
 
-        listDataChild.put(listDataHeader.get(0), "eventdata1"); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), "eventdata2");
-        listDataChild.put(listDataHeader.get(2), "eventdata3");
+        listDataChild.put(listDataHeader.get(0), temp); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), temp);
+        listDataChild.put(listDataHeader.get(2), temp);
     }
 }
