@@ -28,6 +28,36 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     // child data in format of header title, child title
     private HashMap<String, EventData> _listDataChild;
 
+
+
+    // Ken: How to pull db data:
+    // Listener
+    //Firebase.setAndroidContext(this);
+    //Firebase firebase = new Firebase("https://fornow.firebaseio.com/events");
+
+    // Example push:
+    // Event temp = new Event(45.4,20.7,"Frisbee", 5, "come play frisbee at Google");
+    // firebase.push().setValue(temp);
+
+    //Querying db:
+    //Query queryRef = myRef.orderByChild("range");
+
+    // Pulling (query contains all of our db data):
+    // queryRef.addListenerForSingleValueEvent(new ValueEventListener(){
+    //  @Override
+    //  public void onDataChange(DataSnapShot dataSnapShot){
+    //"string" is key for a row, "object" is an event
+        //HashMap<String,Object> myEv = (HashMap<String, Object>).dataSnapshote.getValue();
+
+        // for (String item: myEv.keySet()){
+            // for(String x: item.keySet()){
+
+
+
+
+
+
+
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
                                  HashMap<String, EventData> listChildData) {
         this._context = context;
