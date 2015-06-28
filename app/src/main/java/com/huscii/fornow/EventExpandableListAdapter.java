@@ -16,12 +16,12 @@ import java.util.ArrayList;
 public class EventExpandableListAdapter extends BaseExpandableListAdapter{
 
     private Activity activity;
-    private ArrayList<Object> childtems;
+    private ArrayList<EventData> childtems;
     private LayoutInflater inflater;
     private ArrayList<String> parentItems;
     private ArrayList<EventData> child;
 
-    public EventExpandableListAdapter(ArrayList<String> parents, ArrayList<Object> children) {
+    public EventExpandableListAdapter(ArrayList<String> parents, ArrayList<EventData> children) {
         this.parentItems = parents;
         this.childtems = children;
     }
@@ -40,7 +40,7 @@ public class EventExpandableListAdapter extends BaseExpandableListAdapter{
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return ((ArrayList<EventData>) childtems.get(groupPosition)).size();
+        return childtems.size();
     }
 
     @Override
@@ -82,14 +82,14 @@ public class EventExpandableListAdapter extends BaseExpandableListAdapter{
 
     @Override
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        child = (ArrayList<EventData>) childtems.get(groupPosition);
+        child = (ArrayList<EventData>) childtems; //.get(groupPosition);
         TextView tag = null;
         TextView mapRedirect = null;
         TextView duration = null;
         TextView description = null;
         TextView start = null;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.event_head, null);
+            convertView = inflater.inflate(R.layout.event_body, null);
         }
         tag = (TextView) convertView.findViewById(R.id.eventTag);
         tag.setText(child.get(childPosition).getTag());

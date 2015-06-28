@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class MainActivity extends ExpandableListActivity {
 
     private ArrayList<String> parentItems = new ArrayList<String>();
-    private ArrayList<Object> childItems = new ArrayList<Object>();
+    private ArrayList<EventData> childItems = new ArrayList<EventData>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +21,10 @@ public class MainActivity extends ExpandableListActivity {
 
 
         parentItems.add("Android");
-        ArrayList<String> child = new ArrayList<String>();
-        child.add("Core");
-        child.add("Games");
-        childItems.add(child);
+        ArrayList<EventData> child = new ArrayList<EventData>();
+        child.add(new EventData("title","tag","description",15,30,10,10));
+        child.add(new EventData("t2","tagme","descripture",15,30,10,10));
+        childItems = child;
 
 
 
