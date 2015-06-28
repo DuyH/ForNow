@@ -4,23 +4,32 @@ package com.huscii.fornow;
 import java.util.List;
 import java.util.HashMap;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
+    //private Activity activity;
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<String, List<String>> _listDataChild;
+    private HashMap<String, EventData> _listDataChild;
 
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
+                                 HashMap<String, EventData> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -28,8 +37,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                .get(childPosititon);
+        return this._listDataChild.get(this._listDataHeader.get(groupPosition));
     }
 
     @Override
@@ -38,7 +46,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, final int childPosition,
+    public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         final String childText = (String) getChild(groupPosition, childPosition);
@@ -50,16 +58,66 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.lblListItem);
+                .findViewById(R.id.lblTag);
 
         txtListChild.setText(childText);
+//
+//        TextView txtListChild2 = (TextView) convertView
+//                .findViewById(R.id.lblDuration);
+//
+//        txtListChild2.setText("play with me");
+//
+//        TextView txtListChild2 = (TextView) convertView
+//                .findViewById(R.id.lblDuration);
+//
+//        txtListChild2.setText("play with me");
+//
+//        TextView txtListChild2 = (TextView) convertView
+//                .findViewById(R.id.lblDuration);
+//
+//        txtListChild2.setText("play with me");
+//
+//        TextView txtListChild2 = (TextView) convertView
+//                .findViewById(R.id.lblDuration);
+//
+//        txtListChild2.setText("play with me");
+
+        final TextView mapRedirect = (TextView) convertView.findViewById(R.id.lblDirectTo);
+        //mapRedirect.setText(child.get(childPosition).);
+        SpannableString ss = new SpannableString("Get Directions");
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+                String title = ((EventData) getChild(groupPosition, childPosition)).getTitle();
+                double lat = _listDataChild.get(childPosition).getLat();
+                double lon = _listDataChild.get(childPosition).getLon();
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+lat+", "+lon+"("+title+")");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(mapRedirect.getContext().getPackageManager()) != null) {
+                    mapRedirect.getContext().startActivity(mapIntent);
+                }
+            }
+        };
+        ss.setSpan(clickableSpan, 0, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mapRedirect.setText(ss);
+        mapRedirect.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+        Button btnListChildAttend = (Button) convertView
+                .findViewById(R.id.btnAttend);
+        btnListChildAttend.setText("going?");
+
+        Button btnListChildIgnore = (Button) convertView
+                .findViewById(R.id.btnIgnore);
+        btnListChildIgnore.setText("Ignore Tag Genre");
+
         return convertView;
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                .size();
+        return 1;
     }
 
     @Override
