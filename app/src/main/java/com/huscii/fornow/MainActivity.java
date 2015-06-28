@@ -13,6 +13,8 @@ package com.huscii.fornow;
         import android.widget.ExpandableListView.OnGroupExpandListener;
         import android.widget.Toast;
 
+        import com.firebase.client.Firebase;
+
 public class MainActivity extends Activity {
 
     ExpandableListAdapter listAdapter;
@@ -49,7 +51,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        // Listview Group expanded listener
+        // Listens to whenever the EVENT TITLE is touched
         expListView.setOnGroupExpandListener(new OnGroupExpandListener() {
 
             @Override
@@ -60,7 +62,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        // Listview Group collasped listener
+        // Listens to whenever the EVENT TITLE is collapsed
         expListView.setOnGroupCollapseListener(new OnGroupCollapseListener() {
 
             @Override
@@ -95,11 +97,35 @@ public class MainActivity extends Activity {
     /*
      * Preparing the list data
      */
+
+    // Firebase db listener:
+    Firebase.setAndroidContext(this);
+    Firebase firebase = new Firebase("https://fornow.firebaseio.com/events");
+
+    // Example push (title, tag, desc, int time, int duration, double lat, double lon)
+    EventData temp = new EventData("Planking","",,,,);
+    firebase.push().setValue(temp);
+
+    //Querying db:
+    //Query queryRef = myRef.orderByChild("range");
+
+    // Pulling (query contains all of our db data):
+    // queryRef.addListenerForSingleValueEvent(new ValueEventListener(){
+    //  @Override
+    //  public void onDataChange(DataSnapShot dataSnapShot){
+    //"string" is key for a row, "object" is an event
+    //HashMap<String,Object> myEv = (HashMap<String, Object>).dataSnapshote.getValue();
+
+    // for (String item: myEv.keySet()){
+    // for(String x: item.keySet()){
+
+
+
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
-        // Adding child data
+        // Add Event Titles
         listDataHeader.add("Top 250");
         listDataHeader.add("Now Showing");
         listDataHeader.add("Coming Soon..");

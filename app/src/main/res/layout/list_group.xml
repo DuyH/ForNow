@@ -4,12 +4,21 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp"
-    android:background="#000000">
+    android:background="#000000"
+    android:weightSum="1">
 
 
     <TextView
+        android:layout_width="89dp"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textView2"
+        android:layout_gravity="right"
+        android:layout_weight="0.78" />
+
+    <TextView
         android:id="@+id/lblListHeader"
-        android:layout_width="fill_parent"
+        android:layout_width="233dp"
         android:layout_height="wrap_content"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:textSize="17dp"
