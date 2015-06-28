@@ -12,5 +12,12 @@
     <string name="title_activity_main">MainActivity</string>
 
 
-    <string name="title_activity_ignore_list">IgnoreList!</string>
+    <string name="ignore_list_title">Ignore List</string>
+    <string name="event_view_directions">Get Directions</string>
+    <string name="event_view_tag">Movies</string>
+    <string name="event_view_duration">From 3:05 to 3:30</string>
+    <string name="event_view_description">Come join me on the couch to watch the entire Lord of the Rings trilogy.
+        Popcorn optional.</string>
+
+    <string name="title_activity_ignore_list">IgnoreList!.</string>
 </resources>

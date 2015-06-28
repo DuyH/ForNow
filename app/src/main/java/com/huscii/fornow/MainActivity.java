@@ -4,6 +4,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +14,14 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String[] arry = {"A","B","C"};
+        ArrayAdapter<String> adapta = new ArrayAdapter(this,
+                android.R.layout.simple_list_item_1,
+                arry);
+        ListView myList=(ListView)
+                findViewById(R.id.listView);
+        myList.setAdapter(adapta);
     }
 
     @Override
