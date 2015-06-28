@@ -2,15 +2,9 @@ package com.huscii.fornow;
 
 import android.app.ExpandableListActivity;
 import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -36,7 +30,7 @@ public class MainActivity extends ExpandableListActivity {
 
         ExpandableListView expandableList = getExpandableListView();
         expandableList.setClickable(true);
-        EventExpandableListView adapter = new EventExpandableListView(parentItems, childItems);
+        EventExpandableListAdapter adapter = new EventExpandableListAdapter(parentItems, childItems);
         adapter.setInflater((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE), this);
         expandableList.setAdapter(adapter);
         expandableList.setOnChildClickListener(this);
