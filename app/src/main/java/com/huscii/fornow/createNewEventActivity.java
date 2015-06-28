@@ -77,7 +77,8 @@ public class createNewEventActivity extends ActionBarActivity {
         EventData theNewEvent = new EventData(eventName,eventTags,description,startTime,eventDuration,latitude,longitude  );
 
         theDataBase.push().setValue(theNewEvent);
-
+        Intent nextScreen = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(nextScreen);
     }
 
     public void cancelTheCreation(View v)
