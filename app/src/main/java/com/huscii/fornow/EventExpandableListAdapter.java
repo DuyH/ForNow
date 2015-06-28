@@ -13,14 +13,15 @@ import java.util.ArrayList;
 /**
  * Created by Ian on 6/28/2015.
  */
-public class EventExpandableListView extends BaseExpandableListAdapter{
+public class EventExpandableListAdapter extends BaseExpandableListAdapter{
 
     private Activity activity;
     private ArrayList<Object> childtems;
     private LayoutInflater inflater;
-    private ArrayList<String> parentItems, child;
+    private ArrayList<String> parentItems;
+    private ArrayList<EventData> child;
 
-    public EventExpandableListView(ArrayList<String> parents, ArrayList<Object> children) {
+    public EventExpandableListAdapter(ArrayList<String> parents, ArrayList<Object> children) {
         this.parentItems = parents;
         this.childtems = children;
     }
@@ -39,7 +40,7 @@ public class EventExpandableListView extends BaseExpandableListAdapter{
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return ((ArrayList<String>) childtems.get(groupPosition)).size();
+        return ((ArrayList<EventData>) childtems.get(groupPosition)).size();
     }
 
     @Override
@@ -81,20 +82,37 @@ public class EventExpandableListView extends BaseExpandableListAdapter{
 
     @Override
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        child = (ArrayList<String>) childtems.get(groupPosition);
-        TextView textView = null;
+        child = (ArrayList<EventData>) childtems.get(groupPosition);
+        TextView tag = null;
+        TextView mapRedirect = null;
+        TextView duration = null;
+        TextView description = null;
+        TextView start = null;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.event_head, null);
         }
-        textView = (TextView) convertView.findViewById(R.id.eventTitle);
-        textView.setText(child.get(childPosition));
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(activity, child.get(childPosition),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        tag = (TextView) convertView.findViewById(R.id.eventTag);
+        tag.setText(child.get(childPosition).getTag());
+
+        //mapRedirect = (TextView) convertView.findViewById(R.id.eventMapRedirect);
+        //mapRedirect.setText(child.get(childPosition).);
+
+        duration = (TextView) convertView.findViewById(R.id.eventDuration);
+        duration.setText(child.get(childPosition).getDuration());
+
+        description = (TextView) convertView.findViewById(R.id.eventDescription);
+        description.setText(child.get(childPosition).getDesc());
+
+        start = (TextView) convertView.findViewById(R.id.eventStart);
+        start.setText(child.get(childPosition).getTime());
+
+//        convertView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+////            public void onClick(View view) {
+////                Toast.makeText(activity, child.get(childPosition),
+////                        Toast.LENGTH_SHORT).show();
+////            }
+//        });
         return convertView;
 
     }
