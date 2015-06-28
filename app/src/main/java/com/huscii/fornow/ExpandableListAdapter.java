@@ -86,6 +86,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_item, null);
         }
+        System.out.println("Baby's on fire!");
 
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.lblTag);
