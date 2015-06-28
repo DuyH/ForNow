@@ -20,4 +20,5 @@
         Popcorn optional.</string>
 
     <string name="title_activity_ignore_list">IgnoreList!.</string>
+    <string name="title_activity_create_new_event">createNewEventActivity</string>
 </resources>
