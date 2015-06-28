@@ -27,7 +27,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<String, EventData> _listDataChild;
+    private HashMap<String, String> _listDataChild;
 
 
 
@@ -60,7 +60,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, EventData> listChildData) {
+                                 HashMap<String, String> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -87,7 +87,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_item, null);
         }
-        Log.d("tag","Baby's on fire!");
 
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.lblTag);
@@ -116,24 +115,24 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         final TextView mapRedirect = (TextView) convertView.findViewById(R.id.lblDirectTo);
         //mapRedirect.setText(child.get(childPosition).);
-        SpannableString ss = new SpannableString("Get Directions");
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View textView) {
-                String title = ((EventData) getChild(groupPosition, childPosition)).getTitle();
-                double lat = _listDataChild.get(childPosition).getLat();
-                double lon = _listDataChild.get(childPosition).getLon();
-                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+lat+", "+lon+"("+title+")");
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                if (mapIntent.resolveActivity(mapRedirect.getContext().getPackageManager()) != null) {
-                    mapRedirect.getContext().startActivity(mapIntent);
-                }
-            }
-        };
-        ss.setSpan(clickableSpan, 0, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        mapRedirect.setText(ss);
-        mapRedirect.setMovementMethod(LinkMovementMethod.getInstance());
+//        SpannableString ss = new SpannableString("Get Directions");
+//        ClickableSpan clickableSpan = new ClickableSpan() {
+//            @Override
+//            public void onClick(View textView) {
+//                String title = ((EventData) getChild(groupPosition, childPosition)).getTitle();
+//                double lat = _listDataChild.get(childPosition).getLat();
+//                double lon = _listDataChild.get(childPosition).getLon();
+//                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+lat+", "+lon+"("+title+")");
+//                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//                mapIntent.setPackage("com.google.android.apps.maps");
+//                if (mapIntent.resolveActivity(mapRedirect.getContext().getPackageManager()) != null) {
+//                    mapRedirect.getContext().startActivity(mapIntent);
+//                }
+//            }
+//        };
+//        ss.setSpan(clickableSpan, 0, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        mapRedirect.setText(ss);
+//        mapRedirect.setMovementMethod(LinkMovementMethod.getInstance());
 
 
         Button btnListChildAttend = (Button) convertView
