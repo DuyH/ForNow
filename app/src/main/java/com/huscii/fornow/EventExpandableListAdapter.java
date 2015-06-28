@@ -93,8 +93,8 @@ public class EventExpandableListAdapter extends BaseExpandableListAdapter{
         if (convertView == null) {
             convertView = inflater.inflate(event_body, null);
         }
-        LinearLayout ll = (LinearLayout) convertView;
-        tag = (TextView) ll.findViewById(R.id.eventTag);
+        //LinearLayout ll = (LinearLayout) convertView;
+        tag = (TextView) convertView.findViewById(R.id.eventTag);
         tag.setText(child.get(childPosition).getTag());
 
         //mapRedirect = (TextView) convertView.findViewById(R.id.eventMapRedirect);
