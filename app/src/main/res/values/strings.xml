@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">ForNow</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Hey Jude</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_event_view">EventView</string>
     <string name="eventDescription">Test me sucka!</string>
+    <string name="title_activity_ignore_list">IgnoreList</string>
 </resources>
