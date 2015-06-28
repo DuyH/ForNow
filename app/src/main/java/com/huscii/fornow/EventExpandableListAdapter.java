@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static com.huscii.fornow.R.layout.event_body;
 
 /**
  * Created by Ian on 6/28/2015.
@@ -71,7 +74,7 @@ public class EventExpandableListAdapter extends BaseExpandableListAdapter{
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.event_body, null);
+            convertView = inflater.inflate(event_body, null);
         }
 
         ((TextView) convertView).setText(parentItems.get(groupPosition));
@@ -82,16 +85,16 @@ public class EventExpandableListAdapter extends BaseExpandableListAdapter{
 
     @Override
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        child = (ArrayList<EventData>) childtems; //.get(groupPosition);
-        TextView tag = null;
-        TextView mapRedirect = null;
+        child = childtems; //.get(groupPosition);
+        TextView tag;
         TextView duration = null;
         TextView description = null;
         TextView start = null;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.event_body, null);
+            convertView = inflater.inflate(event_body, null);
         }
-        tag = (TextView) convertView.findViewById(R.id.eventTag);
+        LinearLayout ll = (LinearLayout) convertView;
+        tag = (TextView) ll.findViewById(R.id.eventTag);
         tag.setText(child.get(childPosition).getTag());
 
         //mapRedirect = (TextView) convertView.findViewById(R.id.eventMapRedirect);
