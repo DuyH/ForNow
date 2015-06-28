@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    HashMap<String, EventData> listDataChild;
     GPSTracker gps;
 
     @Override
@@ -93,8 +93,7 @@ public class MainActivity extends Activity {
                         listDataHeader.get(groupPosition)
                                 + " : "
                                 + listDataChild.get(
-                                listDataHeader.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT)
+                                listDataHeader.get(groupPosition)), Toast.LENGTH_SHORT)
                         .show();
                 return false;
             }
@@ -119,7 +118,7 @@ public class MainActivity extends Activity {
 
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        listDataChild = new HashMap<String, EventData>();
 
         // Firebase db listener:
         Firebase.setAndroidContext(this);
@@ -171,8 +170,11 @@ public class MainActivity extends Activity {
         comingSoon.add("The Canyons");
         comingSoon.add("Europa Report");
 
-        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), nowShowing);
-        listDataChild.put(listDataHeader.get(2), comingSoon);
+        listDataChild.put(listDataHeader.get(0), new EventData("title","tag","description",
+                15,15,0,0)); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), new EventData("title2","tag","description",
+                15,15,0,0));
+        listDataChild.put(listDataHeader.get(2), new EventData("title3","tag","description",
+                15,15,0,0));
     }
 }
