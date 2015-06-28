@@ -4,6 +4,7 @@ package com.huscii.fornow;
         import java.util.HashMap;
         import java.util.List;
         import android.app.Activity;
+        import android.content.Intent;
         import android.os.Bundle;
         import android.view.View;
         import android.widget.ExpandableListView;
@@ -21,10 +22,13 @@ public class MainActivity extends Activity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+    GPSTracker gps;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        gps = new GPSTracker(MainActivity.this);
         setContentView(R.layout.activity_main);
 
         // get the listview
@@ -52,6 +56,10 @@ public class MainActivity extends Activity {
         });
 
         // Listens to whenever the EVENT TITLE is touched
+
+
+
+        // Listview Group expanded listener
         expListView.setOnGroupExpandListener(new OnGroupExpandListener() {
 
             @Override
@@ -92,6 +100,15 @@ public class MainActivity extends Activity {
                 return false;
             }
         });
+
+
+    }
+
+    public void createTheEventButtonHandler(View v)
+    {
+        Intent nextScreen = new Intent(getApplicationContext(), createNewEventActivity.class);
+        startActivity(nextScreen);
+
     }
 
     /*

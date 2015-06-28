@@ -1,0 +1,320 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.huscii.fornow.createNewEventActivity"
+    android:clickable="true"
+    android:id="@+id/ActivityEventCreationLayout">
+
+    <TextView android:text="Title: " android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TitleLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tags:"
+        android:id="@+id/tagsLable"
+        android:layout_alignBaseline="@+id/tagsInput"
+        android:layout_alignBottom="@+id/tagsInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startTimeGroup"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tagsInput">
+
+        <RadioButton
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:id="@+id/start5Min"
+            android:checked="true"
+            android:textSize="14dp"
+            android:clickable="true"
+            android:enabled="true" />
+
+        <RadioButton
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="15"
+            android:id="@+id/start15Min"
+            android:checked="false"
+            android:textSize="14dp"
+            android:clickable="true"
+            android:enabled="true" />
+
+        <RadioButton
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="30"
+            android:id="@+id/start30Min"
+            android:checked="false"
+            android:textSize="14dp"
+            android:clickable="true"
+            android:enabled="true" />
+    </RadioGroup>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/listOfDurationTimes"
+        android:layout_below="@+id/startTimeGroup"
+        android:layout_alignLeft="@+id/startTimeGroup"
+        android:layout_alignStart="@+id/startTimeGroup"
+        android:layout_marginTop="25dp"
+        android:layout_alignRight="@+id/startTimeGroup"
+        android:layout_alignEnd="@+id/startTimeGroup"
+        android:clickable="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:minHeight="50dp"
+        android:visibility="visible"
+        android:layout_alignParentEnd="false">
+
+
+        <RadioGroup
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/listOfDurationTimes"
+            android:layout_alignLeft="@+id/listOfDurationTimes"
+            android:layout_alignStart="@+id/listOfDurationTimes"
+            android:layout_marginTop="24dp"
+            android:nestedScrollingEnabled="false"
+            android:id="@+id/ListOfRadioButtonDurations"
+            android:focusable="false"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:touchscreenBlocksFocus="true">
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:id="@+id/duration10min"
+                android:checked="true" />
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:id="@+id/duration20min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="30"
+                android:id="@+id/duration30min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="40"
+                android:id="@+id/duration40min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="50"
+                android:id="@+id/duration50min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:id="@+id/duration60min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="70"
+                android:id="@+id/duration70min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="80"
+                android:id="@+id/duration80min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="90"
+                android:id="@+id/duration90min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:id="@+id/duration100min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="110"
+                android:id="@+id/duration110min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="120"
+                android:id="@+id/duration120min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="130"
+                android:id="@+id/duration130min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="140"
+                android:id="@+id/duration140min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="150"
+                android:id="@+id/duration150min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="160"
+                android:id="@+id/duration160min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="170"
+                android:id="@+id/duration170min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="180"
+                android:id="@+id/duration180min"
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/durationfiller"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+        </RadioGroup>
+    </ScrollView>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:id="@+id/descriptionInput"
+        android:text="Enter you description here"
+        android:layout_above="@+id/createTheEvent"
+        android:layout_alignLeft="@+id/descriptionLabel"
+        android:layout_alignStart="@+id/descriptionLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duration Time"
+        android:id="@+id/durationTimeLabel"
+        android:layout_alignTop="@+id/listOfDurationTimes"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="26dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description:"
+        android:id="@+id/descriptionLabel"
+        android:layout_above="@+id/descriptionInput"
+        android:layout_marginBottom="18dp" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Do it"
+        android:id="@+id/createTheEvent"
+        android:layout_alignParentBottom="true"
+        android:onClick="createAnEvent" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Don&apos;t do it"
+        android:id="@+id/cancelTheEvent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/descriptionInput"
+        android:layout_alignEnd="@+id/descriptionInput"
+        android:layout_marginRight="27dp"
+        android:layout_marginEnd="27dp"
+        android:onClick="cancelTheCreation" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleInput"
+        android:hint="Enter a title"
+        android:textSize="10dp"
+        android:enabled="true"
+        android:editable="true"
+        android:clickable="true"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/createTheEvent"
+        android:layout_alignEnd="@+id/createTheEvent"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tagsInput"
+        android:hint="Enter a Tag"
+        android:textSize="10dp"
+        android:layout_below="@+id/TitleLabel"
+        android:layout_toLeftOf="@+id/cancelTheEvent"
+        android:layout_toStartOf="@+id/cancelTheEvent"
+        android:layout_marginRight="7dp"
+        android:layout_marginEnd="7dp"
+        android:editable="true"
+        android:enabled="true"
+        android:clickable="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Time:"
+        android:id="@+id/textView"
+        android:layout_alignLeft="@+id/descriptionLabel"
+        android:layout_alignStart="@+id/descriptionLabel"
+        android:layout_below="@+id/tagsInput" />
+
+</RelativeLayout>
